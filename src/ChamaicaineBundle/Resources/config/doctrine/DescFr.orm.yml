@@ -1,0 +1,14 @@
+ChamaicaineBundle\Entity\DescFr:
+    type: entity
+    table: null
+    repositoryClass: ChamaicaineBundle\Repository\DescFrRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        description:
+            type: text
+    lifecycleCallbacks: {  }

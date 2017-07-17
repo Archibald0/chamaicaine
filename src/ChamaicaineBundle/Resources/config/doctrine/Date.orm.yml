@@ -1,0 +1,31 @@
+ChamaicaineBundle\Entity\Date:
+    type: entity
+    table: null
+    repositoryClass: ChamaicaineBundle\Repository\DateRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        date:
+            type: datetime
+        name:
+            type: string
+            length: 255
+        address:
+            type: string
+            length: 255
+        zip:
+            type: integer
+        town:
+            type: string
+            length: 255
+        price:
+            type: string
+            length: 255
+        full:
+            type: boolean
+            nullable: true
+    lifecycleCallbacks: {  }

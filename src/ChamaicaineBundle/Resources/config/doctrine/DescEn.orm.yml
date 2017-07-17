@@ -1,0 +1,14 @@
+ChamaicaineBundle\Entity\DescEn:
+    type: entity
+    table: null
+    repositoryClass: ChamaicaineBundle\Repository\DescEnRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        description:
+            type: text
+    lifecycleCallbacks: {  }
