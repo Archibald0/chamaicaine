@@ -1,6 +1,6 @@
 ChamaicaineBundle\Entity\User:
     type: entity
-    table: null
+    table: fos_user
     repositoryClass: ChamaicaineBundle\Repository\UserRepository
     id:
         id:
