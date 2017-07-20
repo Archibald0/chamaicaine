@@ -10,4 +10,16 @@ namespace ChamaicaineBundle\Repository;
  */
 class DateRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function dateByDesc() {
+        $now = new \DateTime();
+        $dead = $now->modify('-1 month');
+
+        $q = $this->createQueryBuilder('d')
+            ->select()
+            ->where('d.date > :dead')
+            ->orderBy('d.date', 'desc')
+            ->setParameter('dead', $dead);
+
+        return $q->getQuery()->getResult();
+    }
 }

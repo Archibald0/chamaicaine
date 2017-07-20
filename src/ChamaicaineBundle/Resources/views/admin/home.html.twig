@@ -1,0 +1,215 @@
+{% extends "@Chamaicaine/admin/layout.html.twig" %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs white">
+                <li class="tab col s3"><a class="active" href="#descFr">Description Fr</a></li>
+                <li class="tab col s3"><a href="#descEn">Description En</a></li>
+                <li class="tab col s3"><a href="#dates">Dates</a></li>
+                <li class="tab col s3"><a href="#background">background</a></li>
+            </ul>
+        </div>
+
+        <div id="descFr" class="col s12">
+            {{ form_start(formDescFr) }}
+            {{ form_end(formDescFr) }}
+        </div>
+
+        <div id="descEn" class="col s12">
+            {{ form_start(formDescEn) }}
+            {{ form_end(formDescEn) }}
+        </div>
+
+        <div id="dates" class="col s12 row">
+            <div class="col s12">
+                <button class="btn" id="add_date">Ajouter une date</button>
+            </div>
+            <div class="col s12 date_form">
+                {{ form_start(formDate) }}
+                <div class="col s6">
+                    <label for="date">Date</label>
+                    <input name="date" type="date" class="datepicker">
+                </div>
+                <div class="col s6">
+                    <label for="time">Heure</label>
+                    <input name="time" type="time" class="timepicker">
+                </div>
+                {{ form_end(formDate) }}
+            </div>
+
+            <div class="col s12">
+                <table class="bordered responsive-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="body_date">
+                    {% for date in dates %}
+                        <tr>
+                            <td>{{ date.date|date('d/M/Y H:i') }}</td>
+                            <td>{{ date.name }}</td>
+                            <td>
+                                {{ date.address }}<br>
+                                {{ date.zip ~ ' ' ~ date.town }}
+                            </td>
+                            <td>{{ date.price }}</td>
+                            <td><i id="{{ date.id }}" class="date_delete material-icons">close</i></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div id="background" class="col s12">
+            <div class="row">
+                <div class="col s12">
+                    {{ form_start(formImage) }}
+                    {{ form_end(formImage) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <ul class="imgRow">
+                        {% for image in images %}
+                            <li class="imgShow" id="{{ image.id }}">
+                                <img src="{{ asset('uploads/images/' ~ image.src) }}" alt="{{ image.alt }}">
+                                <button class="btn red imgBtn" id="{{ image.id }}">Supprimer</button>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+    <script>
+        $(document).ready( function () {
+
+            function delImg () {
+                $('.imgBtn').click(function (e) {
+                    e.preventDefault();
+                    var $data ={'id': $(this).attr('id')} ;
+                    var $this = $(this);
+
+                    $.ajax({
+                        method: 'post',
+                        url: '{{ path('chama_admin_del_image') }}',
+                        data: $data,
+
+                        success: function (response) {
+                            console.log(response);
+                            Materialize.toast('Image effacée :(', 2000);
+                            $this.parent().remove();
+
+                        }
+                    })
+                });
+            }
+
+            function delDate () {
+                $('.date_delete').click(function (e) {
+                    e.preventDefault();
+                    var $data ={'id': $(this).attr('id')} ;
+                    var $this = $(this);
+
+                    $.ajax({
+                        method: 'post',
+                        url: '{{ path('chama_admin_del_date') }}',
+                        data: $data,
+
+                        success: function (response) {
+                            Materialize.toast('Date effacée :(', 2000);
+                            $this.closest('tr').remove();
+                        }
+                    })
+                });
+            }
+
+            $('form[name="chamaicainebundle_image"]').submit( function (e) {
+                e.preventDefault();
+                var $this = $(this);
+                var $data = new FormData($(this)[0]);
+                
+                $.ajax({
+                    method: 'post',
+                    url: '{{ path('chama_admin_add_image') }}',
+                    data: $data,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        $this.trigger('reset');
+                        $('.imgRow').append(response);
+                        Materialize.toast('Image ajoutée au background!', 2000);
+                        delImg();
+                    }
+                })
+            });
+
+            $('form[name="chamaicainebundle_descfr"]').submit( function (e) {
+                e.preventDefault();
+                
+                var $data = $(this).serialize();
+                
+                $.ajax({
+                    method: 'post',
+                    url: '{{ path('chama_admin_desc_fr') }}',
+                    data: $data,
+                    
+                    success: function (response) {
+                        Materialize.toast(response, 2000);
+                    }
+                })
+            });
+
+            $('form[name="chamaicainebundle_descen"]').submit( function (e) {
+                e.preventDefault();
+                var $data = $(this).serialize();
+
+                $.ajax({
+                    method: 'post',
+                    url: '{{ path('chama_admin_desc_en') }}',
+                    data: $data,
+
+                    success: function (response) {
+                        Materialize.toast(response, 2000);
+                    }
+                })
+            })
+
+            $('form[name="chamaicainebundle_date"]'). submit( function (e) {
+                e.preventDefault();
+                var $data = $(this).serialize();
+                var $this = $(this);
+
+                $.ajax({
+                    method: 'post',
+                    url: '{{ path('chama_admin_date') }}',
+                    data: $data,
+
+                    success: function (response) {
+                        $('#body_date').prepend(response);
+                        $this.trigger('reset');
+                        Materialize.toast('Date ajoutée !', 2000);
+                        delDate();
+                    }
+                })
+            });
+            delDate();
+            delImg();
+        })
+    </script>
+{% endblock %}

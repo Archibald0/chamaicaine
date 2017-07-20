@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block title %}LA CHAMAÏCAINE - Chamaicaine, chanson naïve{% endblock %}
+{% block meta %}
+    <meta charset="utf-8">
+    <meta name="description" content="La Chamaïcaine, ou Chamaicaine pour les intimes sera ravie d'animer tous vos évènements : concerts en tous lieux, à travers la Seine et Marne (77) et l'Ile de France, de Paris à Bois-le-Roi." />
+    <meta name="keywords" content="chamïcaine, chamaicaine, groupe musique, groupe musique bois-le-roi, Lemi, les invités" />
+{% endblock %}
+{% block header %}
+    <div id="player">
+        <iframe width="250px" height="70px" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/297587451&amp;color=000000&amp;auto_play=false&amp;hide_related=false&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false"></iframe>
+    </div>
+    <div id="logo"><img src="content/bck/logo.png" /></div>
+
+    <div id="social">
+        <ul>
+            <li><a href="https://www.facebook.com/lachamaicaine" target="_blank" title="facebook"><img src="content/pics/Facebook.png"></a></li>
+            <li><a href="https://www.instagram.com/lachamaicaine/" target="_blank" title="instagram"><img src="content/pics/Instagram.png"></a></li>
+            <li><a href="https://www.youtube.com/channel/UCwYhbEv4moH1uqamFN263mw" target="_blank" title="youtube"><img src="content/pics/Youtube.png"></a></li>
+            <li><a href="https://soundcloud.com/lachamaicaine" target="_blank" title="soundcloud"><img src="content/pics/soundcloud.png" /></a></li>
+        </ul>
+    </div>
+{% endblock %}
+{% block body %}
+    <div id="front"></div>
+
+    <section id="bck">
+        <div class="carousel carousel-slider">
+            {% for image in images %}
+                <div class="carousel-item">
+                    <img src="{{ asset('uploads/images/') ~ image.src }}" alt="{{ image.alt }}">
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+{% endblock %}

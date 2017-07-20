@@ -1,3 +1,7 @@
 chamaicaine_homepage:
     path:     /
     defaults: { _controller: ChamaicaineBundle:Default:index }
+
+cham_admin:
+    resource: "routings/admin.yml"
+    prefix: /admin

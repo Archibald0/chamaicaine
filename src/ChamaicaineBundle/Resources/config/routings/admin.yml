@@ -1,0 +1,27 @@
+chama_admin_home:
+    path: /home
+    defaults: { _controller: ChamaicaineBundle:Admin:home}
+
+chama_admin_add_image:
+    path: /img
+    defaults: { _controller: ChamaicaineBundle:Admin:addImage}
+
+chama_admin_del_image:
+    path: /delImg
+    defaults: { _controller: ChamaicaineBundle:Admin:deleteImage}
+
+chama_admin_desc_fr:
+    path: /descFr
+    defaults: { _controller: ChamaicaineBundle:Admin:addDescFr}
+
+chama_admin_desc_en:
+    path: /descEn
+    defaults: { _controller: ChamaicaineBundle:Admin:addDescEn}
+
+chama_admin_date:
+    path: /date
+    defaults: { _controller: ChamaicaineBundle:Admin:addDate}
+
+chama_admin_del_date:
+    path: /delDate
+    defaults: { _controller: ChamaicaineBundle:Admin:deleteDate}

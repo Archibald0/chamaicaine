@@ -1,1 +1,118 @@
 {% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+
+</header>
+
+<section id="home">
+    <div id="menu">
+        <ul>
+            <li><a href="#pres">PRÉSENTATION</a></li>
+            <li><a href="#biopic">BIO</a></li>
+            <li><a href="#date">DATE</a></li>
+            <li><a href="#contact">CONTACTS/PRO</a></li>
+        </ul>
+    </div>
+
+    <div id="pres" class="content">
+
+        <div id="biopic_txt">
+            <span id="button_lang"><a href="#en">En</a><a href="#fr"  class="clicked">Fr</a></span>
+            <div class="bio" id="en">
+                <h2>LA CHAMÏCAINE</h2>
+                <p><strong>LA CHAMAÏCAINE</strong> is an acoustic duet composed of Lemi (vocals, bass guitar, loop station) and Partabass (guitar, ukulele, vocals).</p>
+                <p></p>
+                <p>Go to our <a href="https://soundcloud.com/lachamaicaine" target="_blank">Soundcloud page</a> to get a glimpse of our songs and our <a href="https://www.youtube.com/channel/UCwYhbEv4moH1uqamFN263mw" target="_blank">Youtube channel</a>.</p>
+            </div>
+
+            <div class="bio" id="fr">
+                <h2>LA CHAMAÏCAINE</h2>
+                <p><strong>LA CHAMAÏCAINE</strong> c’est de la chanson française (et anglaise). Un duo acoustique composé de Lemi (chant, basse, loop station) et Partabass (guitare, ukulélé, chant).</p>
+                <br/>
+                <p>Pour un aperçu de nos prestations, allez sur notre page <a href="https://soundcloud.com/lachamaicaine" target="_blank">Soundcloud</a> ainsi que notre <a href="https://www.youtube.com/channel/UCwYhbEv4moH1uqamFN263mw" target="_blank">chaîne Youtube</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="biopic" class="content">
+
+        <div id="biopic_txt">
+            <span id="button_lang"><a href="#bio_en">En</a><a href="#bio_fr" class="clicked">Fr</a></span>
+            <div class="bio" id="bio_en">
+                <h2>LEMI</h2>
+                <p>As a child, Lemi often travelled from France to the UK where her passion for singing and dancing began. She integrated Les Invités (Chanson Française) at their beginnings in 2005. In her band E.T.C (Hazy Pop), formed in 2016, she sings with her drum machine. Prepare to travel in both English and French along with her soothing voice..</p>
+
+                <h2>PARTABASS</h2>
+                <p>Partabass began playing the cello at only 5 years old. He was then drawn by other instruments like the guitar, which he used for his first compositions, and finally the double bass. For 5 years he performed as a double bass player with Les Invités (Chanson française) or La Gargote. In his current band E.T.C, he plays the ukulele and the keyboard. With La Chamaïcaine, he has returned to the imposing double bass, guitar and ukulele.</p>
+            </div>
+
+            <div class="bio" id="bio_fr">
+                <h2>LEMI</h2>
+                <p>Depuis toujours bercée entre la France et la Grande-Bretagne, le chant et la danse, elle intègre Les Invités (Chanson Française) à leurs débuts en 2005. Avec son groupe E.T.C (Hazy Pop), formé en 2016, elle chante munie de sa boîte à rythme et de sa loop station. Au sein du duo La Chamaïcaine, c’est son âme qui est au centre à travers sa voix, où elle nous fait voyager entre le français et l’anglais, au fil du vent, sans accroc. </p>
+
+                <h2>PARTABASS</h2>
+                <p>C’est le violoncelle qui vient le chercher alors qu’il n’a pas 5 ans, puis par le violoncelle, le jazz. Arrivent ensuite la guitare et les premières compositions et, enfin, la contrebasse. Pendant 5 ans, c’est en tant que contrebassiste qu’il accompagne Les Invités (Chanson française) ou La Gargote. Au sein du groupe E.T.C, les lignes de basse font place aux nappes de ukulélé. Pour La Chamaïcaine, il adopte le minimalisme de la guitare et du ukulélé.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="date" class="content">
+        <ul id="tour">
+            <h2>Dates</h2>
+            <li class="tour_item_title">
+                <div class="show_title">
+                    <div class="tour_time-frame">Date</div>
+                    <div class="tour_loc">Showroom</div>
+                    <div class="tour_address">City</div>
+                    <div class="tour_focus_empty"></div>
+                </div>
+            </li>
+
+            <li class="tour_item">
+                <div class="show">
+                    <div class="tour_time-frame">28/04/2017 19h30</div>
+                    <div class="tour_loc">Caprice café</div>
+                    <div class="tour_address">Paris</div>
+                    <div class="tour_info">INFOS</div>
+                </div>
+
+                <div class="tour_focus">
+                    <iframe class="tour_focus_map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10506.450216569994!2d2.3256776!3d48.8274535!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x308141032e96a5f6!2sCaprice+Caf%C3%A9!5e0!3m2!1sfr!2sfr!4v1485441620875" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <div class="tour_focus_infos">Price: free<br/><a href="https://www.facebook.com/CapriceCafeofficiel/?fref=ts" target="_blank">Facebook</a></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div id="contact" class="content">
+        <div>
+            <ul>
+                <li>Email : <em>contact@lachamaicaine.fr</em></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<script src="js/jquery-3.1.0.js"></script>
+
+<script type="text/javascript">
+    if (window.matchMedia("(min-width:400px)").matches) {
+        var script1 = document.createElement('script');
+        script1.type='text/javascript';
+        script1.src ='js/copycats_desk.js';
+        document.getElementsByTagName('head')[0].appendChild(script1);
+    } else {
+        var script1 = document.createElement('script');
+        script1.type='text/javascript';
+        script1.src ='js/copycats_mob.js';
+        document.getElementsByTagName('head')[0].appendChild(script1);
+    }
+</script>
+</body>
+</html>

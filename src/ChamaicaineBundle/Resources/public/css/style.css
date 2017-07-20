@@ -1,0 +1,28 @@
+/* ------- ADMIN ------ */
+.imgShow {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+    .imgShow img {
+        height: 100%;
+    }
+    .imgBtn {
+        position: absolute;
+        bottom:0;
+        right:0;
+    }
+
+#descFr textarea,
+#descEn textarea
+{
+    height: 400px;
+}
+
+.date_form {
+    display: none;
+}
+
+.date_delete{
+    cursor: pointer;
+}

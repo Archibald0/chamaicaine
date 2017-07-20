@@ -1,0 +1,10 @@
+<tr>
+    <td>{{ date.date|date('d/M/Y H:i') }}</td>
+    <td>{{ date.name }}</td>
+    <td>
+        {{ date.address }}<br>
+        {{ date.zip ~ ' ' ~ date.town }}
+    </td>
+    <td>{{ date.price }}</td>
+    <td><i id="{{ date.id }}" class="date_delete material-icons">close</i></td>
+</tr>

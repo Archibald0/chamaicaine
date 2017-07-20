@@ -3,8 +3,12 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}La Chamaïcaine{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block meta %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% block stylesheets %}{% endblock %}
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('bundles/chamaicaine/css/style.css') }}">
     </head>
     <body>
     <header>
