@@ -63,31 +63,29 @@
         </div>
 
         <div id="date" class="content">
-            <ul id="tour">
-                <h2>Dates</h2>
-                <li class="tour_item_title">
-                    <div class="show_title">
-                        <div class="tour_time-frame">Date</div>
-                        <div class="tour_loc">Showroom</div>
-                        <div class="tour_address">City</div>
-                        <div class="tour_focus_empty"></div>
-                    </div>
-                </li>
+            <table>
+                <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Lieu</th>
+                    <th>Addresse</th>
+                    <th>prix</th>
+                    <th></th>
+                </tr>
+                </thead>
 
-                <li class="tour_item">
-                    <div class="show">
-                        <div class="tour_time-frame">28/04/2017 19h30</div>
-                        <div class="tour_loc">Caprice café</div>
-                        <div class="tour_address">Paris</div>
-                        <div class="tour_info">INFOS</div>
-                    </div>
-
-                    <div class="tour_focus">
-                        <iframe class="tour_focus_map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10506.450216569994!2d2.3256776!3d48.8274535!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x308141032e96a5f6!2sCaprice+Caf%C3%A9!5e0!3m2!1sfr!2sfr!4v1485441620875" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-                        <div class="tour_focus_infos">Price: free<br/><a href="https://www.facebook.com/CapriceCafeofficiel/?fref=ts" target="_blank">Facebook</a></div>
-                    </div>
-                </li>
-            </ul>
+                <tbody>
+                {% for date in dates %}
+                    <tr>
+                        <td>{{ date.date|date("m/d/Y H:i") }}</td>
+                        <td>{{ date.name }}</td>
+                        <td>{{ date.address }}<br>{{ date.zip ~ ' ' ~ date.town }}</td>
+                        <td>{{ date.price }} €</td>
+                        <td><a href="#" class="mapShow" id="{{ date.id }}">Afficher la carte</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
 
         <div id="contact" class="content">
@@ -98,8 +96,30 @@
             </div>
         </div>
     </section>
+    <div id="map" class="modal" style="display: none;">
+    </div>
 
 {% endblock %}
 {% block javascripts %}
     <script src="{{ asset('bundles/chamaicaine/js/client.js') }}"></script>
+    <script>
+        $(document).ready( function () {
+            $('.mapShow').click( function(e) {
+                e.preventDefault();
+                var $id = $(this).attr('id');
+                var $data = {'id': $id};
+
+                $.ajax({
+                    method: 'post',
+                    url: '{{ path('chamaicaine_map') }}',
+                    data: $data,
+
+                    success: function (response) {
+                        $('#map').html(response);
+                        $('#map').modal('open');
+                    }
+                })
+            })
+        })
+    </script>
 {% endblock %}

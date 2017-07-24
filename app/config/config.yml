@@ -77,3 +77,20 @@ fos_user:
     from_email:
         address: blabla@gmail.com
         sender_name: blabla
+
+httplug:
+    classes:
+        client: Http\Adapter\Guzzle6\Client
+        message_factory: Http\Message\MessageFactory\GuzzleMessageFactory
+    clients:
+        acme:
+            factory: httplug.factory.guzzle6
+
+ivory_google_map:
+    geocoder:
+        client: httplug.client.default
+        message_factory: httplug.message_factory.default
+        format: json
+    map:
+        api_key: AIzaSyBYORJEEL1lXpUFog795NrENw03cEJcXqI
+
