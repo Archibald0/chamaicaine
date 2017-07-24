@@ -19,6 +19,9 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new ChamaicaineBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
+            new Ivory\SerializerBundle\IvorySerializerBundle(),
+            new Http\HttplugBundle\HttplugBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

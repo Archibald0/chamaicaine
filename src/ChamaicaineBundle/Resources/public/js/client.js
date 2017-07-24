@@ -6,7 +6,7 @@ $(document).ready( function () {
         'height': '100%'
     });
 
-
+    $('.modal').modal();
 });
 
 //Background slide
