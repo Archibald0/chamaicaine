@@ -1,97 +1,103 @@
 {% extends "@Chamaicaine/admin/layout.html.twig" %}
+{% block header %}
+<p class=" admin center">Bienvenu dans ton espace admin</p>
+{% endblock %}
 
 {% block main %}
-<div class="container">
-    <div class="row">
-        <div class="col s12">
-            <ul class="tabs white">
-                <li class="tab col s3"><a class="active" href="#descFr">Description Fr</a></li>
-                <li class="tab col s3"><a href="#descEn">Description En</a></li>
-                <li class="tab col s3"><a href="#dates">Dates</a></li>
-                <li class="tab col s3"><a href="#background">background</a></li>
-            </ul>
-        </div>
-
-        <div id="descFr" class="col s12">
-            {{ form_start(formDescFr) }}
-            {{ form_end(formDescFr) }}
-        </div>
-
-        <div id="descEn" class="col s12">
-            {{ form_start(formDescEn) }}
-            {{ form_end(formDescEn) }}
-        </div>
-
-        <div id="dates" class="col s12 row">
-            <div class="col s12">
-                <button class="btn" id="add_date">Ajouter une date</button>
-            </div>
-            <div class="col s12 date_form">
-                {{ form_start(formDate) }}
-                <div class="col s6">
-                    <label for="date">Date</label>
-                    <input name="date" type="date" class="datepicker">
-                </div>
-                <div class="col s6">
-                    <label for="time">Heure</label>
-                    <input name="time" type="time" class="timepicker">
-                </div>
-                {{ form_end(formDate) }}
-            </div>
-
-            <div class="col s12">
-                <table class="bordered responsive-table">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Name</th>
-                            <th>Address</th>
-                            <th>Price</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="body_date">
-                    {% for date in dates %}
-                        <tr>
-                            <td>{{ date.date|date('d/M/Y H:i') }}</td>
-                            <td>{{ date.name }}</td>
-                            <td>
-                                {{ date.address }}<br>
-                                {{ date.zip ~ ' ' ~ date.town }}
-                            </td>
-                            <td>{{ date.price }}</td>
-                            <td><i id="{{ date.id }}" class="date_delete material-icons">close</i></td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-
-        <div id="background" class="col s12">
-            <div class="row">
-                <div class="col s12">
-                    {{ form_start(formImage) }}
-                    {{ form_end(formImage) }}
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <ul class="imgRow">
-                        {% for image in images %}
-                            <li class="imgShow" id="{{ image.id }}">
-                                <img src="{{ asset('uploads/images/' ~ image.src) }}" alt="{{ image.alt }}">
-                                <button class="btn red imgBtn" id="{{ image.id }}">Supprimer</button>
-                            </li>
-                        {% endfor %}
+    <main class="admin">
+        <div class="container">
+            <div class="row row_top">
+                <div class="col s12 row_bot">
+                    <ul class="tabs white">
+                        <li class="tab col s3"><a class="active" href="#descFr">Description Fr</a></li>
+                        <li class="tab col s3"><a href="#descEn">Description En</a></li>
+                        <li class="tab col s3"><a href="#dates">Dates</a></li>
+                        <li class="tab col s3"><a href="#background">background</a></li>
                     </ul>
                 </div>
+
+                <div id="descFr" class="col s12">
+                    {{ form_start(formDescFr) }}
+                    {{ form_end(formDescFr) }}
+                </div>
+
+                <div id="descEn" class="col s12">
+                    {{ form_start(formDescEn) }}
+                    {{ form_end(formDescEn) }}
+                </div>
+
+                <div id="dates" class="col s12 row">
+                    <div class="col s12">
+                        <button class="btn" id="add_date">Ajouter une date</button>
+                    </div>
+                    <div class="col s12 date_form">
+                        {{ form_start(formDate) }}
+                        <div class="col s6">
+                            <label for="date">Date</label>
+                            <input name="date" type="date" class="datepicker">
+                        </div>
+                        <div class="col s6">
+                            <label for="time">Heure</label>
+                            <input name="time" type="time" class="timepicker">
+                        </div>
+                        {{ form_end(formDate) }}
+                    </div>
+
+                    <div class="col s12">
+                        <table class="bordered responsive-table">
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Name</th>
+                                <th>Address</th>
+                                <th>Price</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="body_date">
+                            {% for date in dates %}
+                                <tr>
+                                    <td>{{ date.date|date('d/M/Y H:i') }}</td>
+                                    <td>{{ date.name }}</td>
+                                    <td>
+                                        {{ date.address }}<br>
+                                        {{ date.zip ~ ' ' ~ date.town }}
+                                    </td>
+                                    <td>{{ date.price }}</td>
+                                    <td><i id="{{ date.id }}" class="date_delete material-icons">close</i></td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div id="background" class="col s12">
+                    <div class="row">
+                        <div class="col s12">
+                            {{ form_start(formImage) }}
+                            {{ form_end(formImage) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <ul class="imgRow">
+                                {% for image in images %}
+                                    <li class="imgShow" id="{{ image.id }}">
+                                        <img src="{{ asset('uploads/images/' ~ image.src) }}" alt="{{ image.alt }}">
+                                        <button class="btn red imgBtn" id="{{ image.id }}">Supprimer</button>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+    </main>
+
 {% endblock %}
 
 {% block javascripts %}

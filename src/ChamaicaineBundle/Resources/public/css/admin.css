@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Leckerli+One|Pacifico');
+
+/* ------- ADMIN ------ */
+.admin{
+    color: black!important;
+}
+.imgShow {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+.imgShow img {
+    height: 100%;
+}
+.imgBtn {
+    position: absolute;
+    bottom:0;
+    right:0;
+}
+
+#descFr textarea,
+#descEn textarea
+{
+    height: 400px;
+}
+
+.date_form {
+    display: none;
+}
+
+.date_delete{
+    cursor: pointer;
+}
+
+.row_top {
+    margin-top: 70px;
+}
+
+.row_bot {
+    margin-bottom: 50px;
+}

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+    <link rel="stylesheet" href="{{ asset('bundles/chamaicaine/css/admin.css') }}">
 {% endblock %}
 
 {% block header %}{% endblock %}
@@ -9,6 +9,5 @@
 {% block main %}{% endblock %}
 
 {% block javascripts %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
     <script src="{{ asset('bundles/chamaicaine/js/admin.js') }}" ></script>
 {% endblock %}
