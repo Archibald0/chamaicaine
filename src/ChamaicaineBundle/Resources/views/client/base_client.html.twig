@@ -79,9 +79,12 @@
                     <tr>
                         <td>{{ date.date|date("m/d/Y H:i") }}</td>
                         <td>{{ date.name }}</td>
-                        <td>{{ date.address }}<br>{{ date.zip ~ ' ' ~ date.town }}</td>
+                        <td>
+                            {{ date.address }}<br>{{ date.zip ~ ' ' ~ date.town }}<br>
+                            <a href="#" class="mapShow" id="{{ date.id }}">Afficher la carte</a>
+                        </td>
                         <td>{{ date.price }} €</td>
-                        <td><a href="#" class="mapShow" id="{{ date.id }}">Afficher la carte</a></td>
+                        <td></td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -96,7 +99,7 @@
             </div>
         </div>
     </section>
-    <div id="map" class="modal" style="display: none;">
+    <div id="map" class="modal map_container" style="display: none;">
     </div>
 
 {% endblock %}

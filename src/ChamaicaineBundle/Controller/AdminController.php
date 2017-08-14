@@ -77,6 +77,7 @@ class AdminController extends Controller
             return new JsonResponse($content);
         }
     }
+    
     public function deleteImageAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
 

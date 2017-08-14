@@ -6,6 +6,8 @@ use ChamaicaineBundle\Entity\Date;
 use ChamaicaineBundle\Entity\DescEn;
 use ChamaicaineBundle\Entity\DescFr;
 use ChamaicaineBundle\Entity\Image;
+use ChamaicaineBundle\Entity\Contact;
+use ChamaicaineBundle\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Ivory\GoogleMap\Service\Geocoder\GeocoderService;
 use Http\Adapter\Guzzle6\Client;
@@ -26,12 +28,18 @@ class ClientController extends Controller
         $descFr = $em->getRepository(DescFr::class)->findOneById(1);
         $descEn = $em->getRepository(DescEn::class)->findOneById(1);
         $dates = $em->getRepository(Date::class)->dateByDesc();
+        $contact = new Contact();
+
+        
+        $formContact = $this->createForm(ContactType::class, $contact);
+
 
         return $this->render('@Chamaicaine/client/base_client.html.twig', array(
             'images' => $images,
             'descFr' => $descFr,
             'descEn' => $descEn,
             'dates' => $dates,
+            'formContact' => $formContact->createView(),
         ));
     }
 
@@ -62,5 +70,9 @@ class ClientController extends Controller
         ));
 
         return new JsonResponse($content);
+    }
+    
+    public function sendContactAction(Request $request) {
+        
     }
 }

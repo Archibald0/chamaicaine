@@ -415,6 +415,14 @@ section	{
     color: red;
 }
 
+.map_container {
+    width: 420px;
+}
+
+#map_canvas {
+    margin: 0 auto;
+}
+
 #contact div ul{
     display: block;
     position: relative;
